@@ -2,7 +2,7 @@
 
 Vector::Vector(){
 	index = 0;
-	planets = {NULL};
+	planets = NULL;
 }
 
 Vector::~Vector(){

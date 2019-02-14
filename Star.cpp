@@ -77,6 +77,7 @@ void Star::orbit(){
 	for(int i = 0; i < this->current_planets; i++){
 		(*this->planets[i]).orbit();
 	}
+	return;
 }
 
 void Star::printStarInfo(){
@@ -86,7 +87,71 @@ void Star::printStarInfo(){
 	for(int i = 0; i < this->current_planets; i++){
 		cout << "\tPlanet " << (*this->planets[i]).getType() << (*this->planets[i]).getID() << " is " << (*this->planets[i]).getDistance() << " million miles away at position " << (*this->planets[i]).getPos() << " around the star." << endl;
 	}
+	return;
 }
+
+Starvector::Starvector(){
+	this->vec = new Vector();
+}
+
+Starvector::~Starvector(){
+	delete this->vec;
+}
+
+long Starvector::addPlanet(){
+	return this->vec->insert(this->vec->index, new Planet(rand()%3001));
+}
+
+bool Starvector::removePlanet(int index){
+	return this->vec->removePlanet(index);
+}
+
+Planet * Starvector::getPlanet(int index){
+	return this->vec->read(index);
+}
+
+void Starvector::orbit(){
+	for(int i = 0; i < this->vec->index; i++){
+		if(this->vec->planets[i] != NULL) this->(*vec->planets[i]).orbit();
+	}
+	return;
+}
+
+void Starvector::printStarInfo(){
+	int num = 0;
+	for(int i = 0; i < this->vec->index; i++){
+		if(this->vec->planets[i] != NULL) num++;
+	}
+	cout << "The star currently has " << num << " planets, and " << (this->vec->index) - num + 1 << " empty spaces to hold a planet." << endl;
+
+	for(int i = 0; i < this->vec->index; i++){
+		if(this->vec->planets[i] != NULL){
+			cout << "\tPlanet " << this->(*vec->planets[i]).getType() << this->(*vec->planets[i]).getID() << " is " << this->(*vec->planets[i]).getDistance() << " million miles away at position " << this->(*vec->planets[i]).getPos() << " around the star." << endl;
+		}
+	}
+	return;
+}
+
+unsigned int Starvector::getCurrentNumPlanets(){
+	return this->vec->size();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
