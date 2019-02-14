@@ -2,14 +2,14 @@
 #define PLANET_H
 class Planet{
 	private:
-		int id;
+		long int id;
 		int pos;
 		int distance;
 		char type;
 	public:
-		Planet(int,int);
+		Planet(int);
 		int orbit();
-		int getID(){return this->id;}
+		long int getID(){return this->id;}
         int getDistance(){return this->distance;}
         int getPos(){return this->pos;}
 		char getType(){return this->type;}

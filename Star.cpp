@@ -6,7 +6,6 @@ using namespace std;
 
 Star::Star(){
 	this->current_planets = 0;
-	this->next_id = 1;
 	this->planets = NULL;
 }
 
@@ -14,22 +13,22 @@ Star::~Star(){
 	for(int i = 0; i < this->current_planets; i++){
 		delete this->planets[i];
 	}
-	
+	delete[] this->planets;
 }
 
-int Star::addPlanet(){
+long int Star::addPlanet(){
 	Planet **pl = new Planet*[this->current_planets + 1];
 	for(int i = 0; i < this->current_planets; i++){
-		pl[i] = new Planet((*this->planets[i]).getDistance(), (*this->planets[i]).getID());
+		pl[i] = new Planet((*this->planets[i]).getDistance());
 		delete this->planets[i];
 		this->planets[i] = NULL;
 	}
-	Planet *new_planet = new Planet(rand()%3001, this->next_id);
+	Planet *new_planet = new Planet(rand()%3001);
 	pl[this->current_planets] = new_planet;
 	this->current_planets++;
-	this->next_id++;
+	delete[] this->planets;
 	this->planets = pl;
-	return this->next_id-1;
+	return new_planet->getID();
 }
 
 bool Star::removePlanet(int id){
@@ -43,7 +42,7 @@ bool Star::removePlanet(int id){
 	int buffer = 0;
 	for(int i = 0; i < this->current_planets; i++){
 		if((*this->planets[i]).getID() != id){
-			pl[i-buffer] = new Planet((*this->planets[i]).getDistance(), (*this->planets[i]).getID());
+			pl[i-buffer] = new Planet((*this->planets[i]).getDistance());
 			delete this->planets[i];
 		}
 		else{
@@ -52,6 +51,7 @@ bool Star::removePlanet(int id){
 		}
 	}
 	this->current_planets--;
+	delete[] this->planets;
 	this->planets = pl;
 	return true;
 }

@@ -4,12 +4,11 @@
 class Star{
 	private:
         int current_planets;
-        int next_id;
 	public:
         Planet ** planets;
         Star();
 		~Star();
-        int addPlanet();
+        long int addPlanet();
 		bool removePlanet(int);
         Planet * getFurthest();
 		Planet * getPlanet(int);

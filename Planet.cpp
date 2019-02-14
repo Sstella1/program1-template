@@ -4,8 +4,8 @@
 
 using namespace std;
 
-Planet::Planet(int distance, int id){
-	this->id = id;
+Planet::Planet(int distance){
+	this->id = &this;
 	this->distance = distance;
    	this->pos = rand() % 360;
 	int random = rand() % 4;
