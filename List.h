@@ -17,6 +17,7 @@ class List{
 		void insert(int index, Planet * p);
 		Planet* read (int index);
 		unsigned size();
+		bool remove(int index);
 };
 
 

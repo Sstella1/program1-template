@@ -90,6 +90,35 @@ void Star::printStarInfo(){
 	return;
 }
 
+Starlist::Starlist(){
+
+}
+Starlist::~Starlist(){
+	
+}
+
+long Starlist::addPlanet(){
+	return list.insert(list.size()+1,new Planet(rand()%3001)).getPlanetId();
+}
+bool Starlist::removePlanet(int index){
+return remove(index);
+}
+Planet* Starlist::getPlanet(int){
+return list.read(index).getPlanetId();
+}
+
+void Starlist::orbit(){
+while(list!=NULL){
+
+}
+}
+void Starlist::printStarInfo(){
+}
+
+unsigned int Starlist::getCurrentNumPlanets(){
+return this->list.size();
+}
+
 Starvector::Starvector(){
 	this->vec = new Vector();
 }

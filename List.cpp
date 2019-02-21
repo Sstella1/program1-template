@@ -10,6 +10,12 @@ List::List(){
 }
 
 ~List(){
+	Node *next= head;
+	while(next){
+	Node *deleted=next;
+	next=next->next;
+	delete deleted;
+	}
 }
 
 void List:: insert(int index, Planet * p){ 

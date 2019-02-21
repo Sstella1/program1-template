@@ -2,8 +2,10 @@
 #define STAR_H
 #include "Planet.h"
 #include "Vector.h"
+#include "List.h"
 
 class Star{
+	
 	private:
         int current_planets;
 	public:
@@ -19,7 +21,19 @@ class Star{
         int getCurrentNumPlanets(){return this->current_planets;}
 };
 
-class StarList{};
+class Starlist{
+	public:
+		List list;
+		Starlist();
+		~Starlist();
+		long addPlanet();
+		bool removePlanet(int);
+		Planet*getPlanet(int);
+		void orbit();
+		void printStarInfo();
+		unsigned int getCurrentNumPlanets();
+
+};
 
 class Starvector{
 		Vector vec;
