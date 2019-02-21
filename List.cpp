@@ -14,16 +14,16 @@ List::List(){
 
 void List:: insert(int index, Planet * p){ 
 
-node *preNode=new node;
-    node *currentNode=new node;
-    node *tempNode=new node;
+Node *preNode=new Node;
+    Node *currentNode=new Node;
+    Node *tempNode=new Node;
     currentNode=head;
     for(int i=1;i<index;i++)
     {
       preNode=currentNode;
       currentNode=currentNode->next;
 	if(currentNode==NULL){
-	node * new_node= new node(p);
+	Node * new_node= new Node(p);
 	tail->next= new_node;
 	
 	}
@@ -35,17 +35,46 @@ node *preNode=new node;
 }
 
 Planet* List:: read(int index){
-
+Node*tempNode= New Node;
+tempNode=NULL;
+int counter=0;
+while(head!=NULL){
+counter++;
+if(counter==index){
+tempNode=head;
+}
+else {
+head=head->next;
+}
+}
+return tempNode;
 
 }
 
 bool List:: remove(int index){
-
+Node *tempNode= NULL;
+Node *tempNodePrev=NULL;
+int counter=0;
+while(head!=NULL){
+counter++;
+if(counter==index){
+tempNode= head->next;
+tempNodePrev=tempNode->next;
+head->next=tempNode->next;
+tempNodePrev->previous=head;
+return true;
+}
+else{
+head=head->next;
+}
+return false;
 }
 
 unsigned List:: size(){
-node *headNode= new node(head);
-node *endNode= new node(tail);
-
-
+int counter=0;
+while(head!=NULL){
+counter++;
+head=head->next;
+}
+return counter;
 } 
